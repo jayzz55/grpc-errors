@@ -34,12 +34,20 @@ func main() {
 	)
 
 	if err != nil {
+		fmt.Println("##############################")
+		fmt.Println("resp")
+		fmt.Println(resp)
+		fmt.Println("resp.GetResult()")
+		fmt.Println(resp.GetResult())
+		fmt.Println("##############################")
 		// ouch!
 		// lets print the gRPC error message
 		// which is "Length of `Name` cannot be more than 10 characters"
 		errStatus, _ := status.FromError(err)
+		fmt.Println("# errStatus.Message")
 		fmt.Println(errStatus.Message())
 		// lets print the error code which is `INVALID_ARGUMENT`
+		fmt.Println("# errStatus.Code")
 		fmt.Println(errStatus.Code())
 		// Want its int version for some reason?
 		// you shouldn't actullay do this, but if you need for debugging,

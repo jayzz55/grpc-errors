@@ -23,7 +23,7 @@ func (s *HelloServer) SayHello(ctx context.Context, req *api.HelloReq) (*api.Hel
 
 func (s *HelloServer) SayHelloStrict(ctx context.Context, req *api.HelloReq) (*api.HelloResp, error) {
 	if len(req.GetName()) >= 10 {
-		return nil, status.Errorf(codes.InvalidArgument,
+		return &api.HelloResp{Result: fmt.Sprintf("Hey, %s!", "JOHNXX")}, status.Errorf(codes.InvalidArgument,
 			"Length of `Name` cannot be more than 10 characters")
 	}
 
